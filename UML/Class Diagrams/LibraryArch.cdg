@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="LibraryArch">
+  <ClassDiagramComponents>
+    <Class name="Book" package="" visibility="public" xPosition="368.0" yPosition="-30.0">
+      <Fields>
+        <Field name="bName" type="String" visibility="private"/>
+        <Field name="ISBN" type="String" visibility="private"/>
+        <Field name="author" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getBookInfo" returnType="void" visibility="public"/>
+        <Method name="updateBookInfo" returnType="void" visibility="public"/>
+        <Method name="deleteBookInfo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Catalog" package="" visibility="public" xPosition="470.0" yPosition="188.0">
+      <Fields>
+        <Field name="b" type="Book" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="showCatalog" returnType="void" visibility="public"/>
+        <Method name="updateCatalog" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Member" package="" visibility="public" xPosition="110.0" yPosition="-46.0">
+      <Fields>
+        <Field name="mID" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="register" returnType="void" visibility="public"/>
+        <Method name="login" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Librarian" package="" visibility="public" xPosition="60.0" yPosition="324.0">
+      <Fields>
+        <Field name="lID" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="register" returnType="void" visibility="public"/>
+        <Method name="login" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Library Management System" package="" visibility="public" xPosition="218.0" yPosition="188.0">
+      <Fields>
+        <Field name="currentUser" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="catalog" returnType="void" visibility="public"/>
+        <Method name="issue" returnType="void" visibility="public"/>
+        <Method name="myAccount" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="IssueRequest" package="" visibility="public" xPosition="470.0" yPosition="328.0">
+      <Fields>
+        <Field name="mID" type="String" visibility="private"/>
+        <Field name="lID" type="String" visibility="private"/>
+        <Field name="ISBN" type="String" visibility="private"/>
+        <Field name="startDate" type="Date" visibility="private"/>
+        <Field name="noOfDays" type="int" visibility="private"/>
+        <Field name="status" type="boolean" visibility="private"/>
+        <Field name="issueID" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createRequest" returnType="void" visibility="public"/>
+        <Method name="showRequest" returnType="void" visibility="public"/>
+        <Method name="updateStatus" returnType="void" visibility="public"/>
+        <Method name="renewal" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="AccountInterface" package="" visibility="public" xPosition="8.0" yPosition="167.0">
+      <Methods>
+        <Method name="register" returnType="void" visibility="public"/>
+        <Method name="login" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="IssueDatabase" package="" visibility="public" xPosition="278.0" yPosition="347.0">
+      <Fields>
+        <Field name="untitledField" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getIssueByID" returnType="void" visibility="public"/>
+        <Method name="pendingIssues" returnType="void" visibility="public"/>
+        <Method name="newIssue" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="." source="Library Management System" target="IssueDatabase" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="." source="IssueDatabase" target="IssueRequest" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="." source="Library Management System" target="Catalog" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="." source="Library Management System" target="Member" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="." source="Library Management System" target="Librarian" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Member" target="AccountInterface"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Librarian" target="AccountInterface"/>
+    <HasRelation name="." source="Catalog" target="Book" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
